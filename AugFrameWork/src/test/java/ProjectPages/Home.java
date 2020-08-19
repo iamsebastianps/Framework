@@ -4,18 +4,27 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class Home {
-	@FindBy(xpath="//div[@class='mTxt' and contains(text(),'Login')]") WebElement LoginButton;
+import bsh.This;
+import utils.*;
+
+public class Home  extends BaseClass{
+	//public WebDriver driver;
+	@FindBy(xpath="//div[@class='mTxt' and contains(text(),'Login')]") WebElement loginLink;
 	
-	static WebDriver driver;
-	
-	public String url="https://www.naukri.com/";
-	public void OpenApp()
+	public Home()
 	{
-		WebDriver driver=new ChromeDriver();
-		System. setProperty("webdriver. chrome. driver",".Drivers/chromedriver");
-		driver.get(url);
+		//this.driver=ldriver;
+		BrowserUtils.openBrowserURL( "https://www.naukri.com/browse-jobs", "Chrome");
+	
+		
+		PageFactory.initElements(driver, this);
+	}
+	public void NavgateLogin()
+	{
+		
+		loginLink.click();
 	}
 	
 }
